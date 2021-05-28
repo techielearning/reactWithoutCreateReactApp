@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script> <!--script to download react from CDN -->
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> <!--script to download react-dom from CDN -->
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script><!--script to download babel from CDN -->
+<script type="text/babel">
+    class App extends React.Component {
+
+        //maintain state of the component 
+        state = {
+            addCount: 0
+        }
+
+        //function which executes during mounting of a component i.e every reload
+        componentDidMount = () => {
+            console.log("component mounted>>>>>>>>>>")
+        }
+
+        //function which executes during every update inside the state of a component.
+        componentDidUpdate = () => {
+            console.log("component updated>>>>>>>>>>")
+        }
+
+        //function to update while onClick of the button
+        changeCount = () => {
+            console.log("button clicked>>>>>>>>>>>>>")
+            this.setState({ addCount: this.state.addCount + 1 }, () => {
+                console.log("addCount>>>>>", this.state.addCount);
+            })
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>Class Component</h1>
+                    <button onClick={() => { this.changeCount() }}>Add</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('output'));
+
+</script>
+
+<body>
+    <div id="output"></div>
+</body>
+
+</html>
